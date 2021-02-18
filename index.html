@@ -8,27 +8,94 @@
 -->
 
 <!DOCTYPE html> 
-<html></html>
-<head></head>
-<body></body> 
-<style></style>
-<script></script>
-<header></header>
-<main></main>
-<footer></footer>
-<section></section>
-<aside></aside>
-<article></article>
-<meta>
-<nav></nav>
-<h1></h1>
-<p></p>
-<a></a>
-<button></button>
-<div></div>
-<ul>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
+<html>
+  <head>
+    <title>Перші кроки Максима</title>
+    <meta>
+  </head>
+  <body>
+    <header id="bg">
+      <h1>Перші кроки Максима</h1>
+      <nav>
+        <a class="link" href="index-tag.html">Теги</a>
+        <br>
+        <a class="link" href="git.html">Git шпаргалка</a>
+      </nav>
+    </header>
+    <main class="block">
+      <section>
+        <article>
+          <div>
+            <p>Це тобі невеличкий гід по завданню №1 і Гіт шпаргалці</p>
+          </div>
+        </article>
+      </section>
+      <aside>
+        <div>
+          <button type="button" onclick="MyFunction()">Натиси мене</button>
+        </div>
+        <ul>
+          <li><a class="link" href="index-tag.html">Теги</a></li>
+          <li><a class="link" href="git.html">Шпаргалка по GIT</a></li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <nav>
+        <a href="index-tag.html">Теги</a>
+        <br>
+        <a href="git.html">Git шпаргалка</a>
+      </nav>
+    </footer>
+    
+    <style>
+      p {
+        color: red;
+      }
+      .link, .block {
+        color: white;
+      }
+      #bg, .block {
+        background-color: darkblue;
+      }
+      .block {
+        display: flex;
+      }
+      
+    </style>
+
+    <script>
+      function getJSON (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function() {
+          var status = xhr.status;
+          if (status === 200) {
+            callback(null, xhr.response);
+          } else {
+            callback(status, xhr.response);
+          }
+        };
+        xhr.send();
+      };
+      
+      function MyFunction() {
+        alert('Нічьосе'); 
+        getJSON('https://api.ipify.org/?format=json',
+        function(err, data) {
+          if (err !== null) {
+            alert('Опанькі: ' + err);
+          } else {
+            console.log(data);
+            alert('Я знаю твій IP: ' + data.ip);
+          }
+        });
+      }
+    </script>
+    
+
+  </body> 
+</html>
+
+<!-- Це один із можливих варіантів компановки тегів -->
